@@ -1,0 +1,6 @@
+GET http://localhost:8080/user/
+Accept: application/json
+Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsb2dpbiI6IjEyMzQ1NkBtYWlsLnJ1IiwiZXhwIjoxNjU5MDA0MjE2fQ.kQoe4MVXC1kNwgnS5ODu7vUWGJA1s9OXy0isyNKwyg4
+
+
+###
