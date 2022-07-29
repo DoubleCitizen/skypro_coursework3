@@ -8,21 +8,21 @@ api = Namespace('auth')
 
 @api.route('/register/')
 class RegisterView(Resource):
-    @api.marshal_with(user, as_list=True, code=200, description='OK')
+    # @api.marshal_with(user, as_list=True, code=200, description='OK')
     def post(self):
         rq_json = request.json
         login = rq_json.get('email')
         password = rq_json.get('password')
 
         if login and password:
-            return user_service.create_user(login, password), 201
+            user_service.create_user(login, password), 201
         else:
             return "Не хватает пароля или почты", 401
 
         tokens = auth_service.generate_tokens(login, password)
 
         if tokens:
-            return auth_service.generate_tokens(username, password)
+            return auth_service.generate_tokens(login, password)
         else:
             return "Ошибка в запросе", 400
         return tokens
@@ -30,7 +30,7 @@ class RegisterView(Resource):
 
 @api.route('/login/')
 class LoginView(Resource):
-    @api.marshal_with(user, as_list=True, code=200, description='OK')
+    # @api.marshal_with(user, as_list=True, code=200, description='OK')
     @api.response(404, 'Not Found')
     def post(self):
         rq_json = request.json
@@ -44,7 +44,7 @@ class LoginView(Resource):
                 print(e)
                 return "", 400
 
-    @api.marshal_with(user, as_list=True, code=200, description='OK')
+    # @api.marshal_with(user, as_list=True, code=200, description='OK')
     @api.response(404, 'Not Found')
     def put(self):
         rq_json = request.json

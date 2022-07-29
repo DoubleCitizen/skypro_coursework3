@@ -2,7 +2,6 @@ from flask import request
 from flask_restx import Namespace, Resource
 
 from project.container import user_service
-from project.models import User
 from project.services.auth_service import auth_required
 from project.setup.api.models import user
 from project.tools.security import generate_password_hash, compose_passwords
